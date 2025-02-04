@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Head from 'next/head';
 import React from 'react';
 import Layout from '../components/Layout';   // Mantém Layout (com Navbar, Footer)
@@ -7,6 +8,17 @@ import Features from '../components/Features';
 import Previews from '../components/Previews';
 
 export default function Home() {
+  const images = ["/1.jpg", "/2.jpg", "/3.jpg", "/4.jpg", "/5.jpg"];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 10000); // Change every 10 seconds
+
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, []);
+
   return (
     <Layout>
       <Head>
@@ -19,7 +31,13 @@ export default function Home() {
       </Head>
 
       {/* HERO SECTION */}
-      <section className="hero-section">
+      <section className="hero-section inset-0 bg-black bg-opacity-50 transition-opacity duration-700"
+        style={{
+          backgroundImage: `url(${images[currentIndex]})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          transition: "background-image 1s ease-in-out",
+        }}>
         <div className="hero-container">
           <h1 className="hero-title">
             Best Onlyfans Leaks content tiers <br />
