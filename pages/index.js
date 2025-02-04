@@ -15,7 +15,7 @@ export default function Home() {
           name="description"
           content="Curated content tiers for your pleasure. With over 5,000+ Models, 50TB+ of content and Instant Delivery, we are sure to have what you are looking for."
         />
-        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="/icon.svg" type="image/x-icon" />
       </Head>
 
       {/* HERO SECTION */}
