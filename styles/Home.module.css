@@ -1,0 +1,15 @@
+/* styles/Home.module.css */
+.pricingContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.pricingCard {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 2rem;
+  max-width: 300px;
+  text-align: center;
+}

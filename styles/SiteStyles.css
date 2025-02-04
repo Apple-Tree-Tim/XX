@@ -1,0 +1,761 @@
+/* =========================
+    IMPORTAÇÃO DE FONTES
+========================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&family=Montserrat:wght@700;800&display=swap');
+
+/* =========================
+    VARIÁVEIS PRINCIPAIS
+========================= */
+:root {
+  /* Cores de marca primária e secundária */
+  --primary-color: #ff005a;       /* Cor já utilizada (rosa vibrante) */
+  --primary-color-hover: #e60050; /* Tom levemente mais escuro para hover */
+  --secondary-color: #7289DA;     /* Exemplo de segundo accent (tom violeta/azul) */
+
+  /* Cores neutras */
+  --dark-bg: #0f0f0f;
+  --dark-bg-alt: #181818;
+  --medium-bg: #2a2a2a;
+  --light-text: #eee;
+  --gray-text: #ccc;
+  --gray-text-2: #bbb;
+  --border-color: #333;
+
+  /* Tipografia e tamanhos */
+  --main-font: 'Poppins', sans-serif;
+  --heading-font: 'Montserrat', sans-serif;
+  --base-font-size: 16px;
+
+  /* Espaçamentos */
+  --section-padding: 4rem;
+  --container-width: 90%;
+}
+
+/* RESET E BASE */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  scroll-behavior: smooth;
+  font-size: var(--base-font-size);
+}
+
+body {
+  font-family: var(--main-font);
+  background-color: var(--dark-bg);
+  color: var(--light-text);
+  line-height: 1.6;
+  padding-top: 80px; /* Ajuste para navbar fixa */
+}
+
+.container {
+  width: var(--container-width);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* =========================
+    NAVBAR
+========================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgba(26, 26, 26, 0.9);
+  padding: 1rem 0;
+  border-bottom: 1px solid #222;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+  z-index: 9999;
+}
+
+.navbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo h1 {
+  color: var(--primary-color);
+  font-size: 1.7rem;
+  font-weight: 700;
+  text-decoration: none;
+  font-family: var(--heading-font); /* Usando a fonte Montserrat */
+  user-select: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.logo h1:hover {
+  color: var(--primary-color-hover);
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.navbar ul li a {
+  color: var(--gray-text);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.navbar ul li a:hover {
+  background-color: #333;
+  color: var(--primary-color);
+}
+
+.btn-menu-bar {
+  display: none;
+  font-size: 1.8rem;
+  color: #ffffff;
+}
+
+@media screen and (max-width: 1000px) {
+  .navbar ul {
+    display: none;
+  }
+  .btn-menu-bar {
+    display: block;
+  }
+}
+
+.title-menu-bar {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  font-family: var(--heading-font);
+}
+
+.options-menu-bar {
+  padding: 0.7rem;
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+  text-decoration: none;
+  font-size: 1rem;
+  margin-bottom: 5px;
+  border-radius: 6px;
+  color: #fff;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.options-menu-bar:hover {
+  background-color: var(--primary-color);
+}
+
+/* =========================
+    HERO SECTION
+========================= */
+.hero-section {
+  background: linear-gradient(
+              rgba(0, 0, 0, 0.5),
+              rgba(0, 0, 0, 0.5)
+            ),
+            url('/3.png') center/cover no-repeat;
+  position: relative;
+  padding: 8rem 1rem;
+  text-align: center;
+}
+
+.hero-container {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  font-family: var(--heading-font);
+  color: #fff;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.hero-subtitle {
+  color: var(--gray-text);
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+@media screen and (max-width: 1000px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+}
+
+.highlight-hero {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.hero-btn-group {
+  display: inline-flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* =========================
+    BUTTONS GERAIS
+========================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #444;
+  color: #fff;
+  border: none;
+  padding: 0.50rem 1.25rem;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s, transform 0.2s;
+  min-width: 140px;
+  text-align: center;
+}
+
+.btn:hover {
+  background-color: #666;
+  transform: scale(1.02);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-color-hover);
+  transform: scale(1.04);
+}
+
+.btn-light {
+  background-color: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+.btn-light:hover {
+  background-color: #fff;
+  color: #111;
+  transform: scale(1.05);
+}
+
+/* =========================
+    PRICING SECTION
+========================= */
+.pricing-section {
+  background-color: var(--dark-bg-alt);
+  padding: var(--section-padding) 1rem;
+  text-align: center;
+}
+
+.pricing-title {
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  font-family: var(--heading-font);
+}
+
+.pricing-subtitle {
+  color: var(--gray-text);
+  max-width: 600px;
+  margin: 0.5rem auto 3rem;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* Grid para 4 colunas */
+.pricing-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1000px) {
+  .pricing-container {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+/* Card de preços */
+.pricing-card {
+  background-color: #1f1f1f;
+  border: 3px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+
+.pricing-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(255, 0, 90, 0.4);
+  border-color: var(--primary-color);
+}
+
+.pricing-card.popular {
+  background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+  border-color: #333;
+}
+
+.pricing-card.popular:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(255, 0, 90, 0.4);
+  border-color: var(--primary-color);
+}
+
+.plan-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+  color: #e3e3e3;
+  font-family: var(--heading-font);
+}
+
+.plan-badge {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.plan-description {
+  color: var(--gray-text);
+  font-size: 0.95rem;
+  min-height: 50px;
+  margin-bottom: 1rem;
+}
+
+.plan-price {
+  font-size: 2.3rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.plan-price span {
+  font-size: 1rem;
+  color: var(--gray-text);
+  font-weight: 500;
+  margin-left: 3px;
+}
+
+/* Lista de features */
+.pricing-card ul {
+  list-style: none;
+  margin: 1rem 0;
+  text-align: left;
+  padding-left: 0;
+}
+
+/* 
+   IMPORTANTE:
+   Usamos variação de unicode + FE0E (text presentation) 
+   para evitar que o iPhone ou Android renderize como emoji
+   preto e quebre a cor. 
+*/
+.feature-included::before {
+  content: "\2714\FE0E"; /* check mark + text presentation */
+  color: #28a745;
+  font-weight: bold;
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.feature-excluded::before {
+  content: "\2718\FE0E"; /* ballot x (ou pode usar "\274C\FE0E") */
+  color: #dc3545;
+  font-weight: bold;
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.pricing-card ul li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.7rem;
+  font-size: 0.95rem;
+  color: var(--gray-text-2);
+}
+
+/* Botão do Card de preço */
+.pricing-btn {
+  margin-top: auto;
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-weight: 700;
+  border-radius: 6px;
+  transition: background-color 0.3s, transform 0.2s;
+  text-decoration: none;
+  align-self: center;
+  width: 100%;
+}
+
+.pricing-btn:hover {
+  background-color: var(--primary-color-hover);
+  transform: scale(1.03);
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255, 0, 90, 0.4);
+}
+
+.pricing-btn:active {
+  transform: scale(0.98);
+}
+
+/* =========================
+    REVIEWS SECTION
+========================= */
+.review-section {
+  padding: 6rem 1rem;
+  background-color: var(--dark-bg-alt);
+  text-align: center;
+}
+
+.review-title {
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  font-family: var(--heading-font);
+}
+
+.review-subtitle {
+  color: var(--gray-text);
+  margin-bottom: 3rem;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.containerCarouselSkills {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  width: var(--container-width);
+  max-width: 1400px;
+  justify-content: space-between;
+  margin: 0 auto 20px;
+}
+
+.containerCarouselSkills .review-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: var(--medium-bg);
+  padding: 1rem 1rem;
+  border-radius: 10px;
+  margin: 0px 20px 0px 2px;
+  min-width: 250px;
+}
+
+/* =========================
+    FEATURES SECTION
+========================= */
+.features-section {
+  background: linear-gradient(180deg, #9f00382f 0%, var(--dark-bg) 70%);
+  padding: var(--section-padding) 1rem;
+  text-align: center;
+}
+
+.features-title {
+  color: #fff;
+  font-size: 2rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  font-family: var(--heading-font);
+}
+
+.features-subtitle {
+  color: #bbb;
+  font-size: 1rem;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  line-height: 1.4;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.feature-card {
+  background-color: var(--medium-bg);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid var(--medium-bg);
+  justify-content: center;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+  border: 1px solid var(--primary-color);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  color: #fff;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: var(--heading-font);
+}
+
+.feature-card p {
+  color: var(--gray-text);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 auto;
+  max-width: 90%;
+  text-align: center;
+}
+
+.highlight {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+/* =========================
+    PREVIEW SECTION
+========================= */
+.preview-section {
+  background-color: var(--dark-bg);
+  padding: var(--section-padding) 1rem;
+  text-align: center;
+}
+
+.preview-section h2 {
+  color: #fff;
+  font-size: 2rem;
+  font-family: var(--heading-font);
+  margin-bottom: 1rem;
+}
+
+.preview-section p {
+  color: var(--gray-text);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  line-height: 1.4;
+}
+
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.preview-video {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  width: 100%;
+  max-height: 500px;
+}
+
+.preview-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* SPOILER OVERLAY */
+.spoiler-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0,0,0,0.6);
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.spoiler-overlay span {
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.4rem;
+  padding: 0.5rem 1rem;
+  background-color: #111;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+/* =========================
+    FOOTER
+========================= */
+.footer {
+  background-color: #111;
+  color: #aaa;
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-top: 2rem;
+}
+
+/* =========================
+    FLOATING BUTTONS
+========================= */
+.floating-buttons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 999999;
+}
+
+.floating-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #444;
+  color: #fff;
+  font-size: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.floating-button:hover {
+  background-color: #666;
+  transform: scale(1.1);
+}
+
+/* =========================
+    MAIN CONTENT
+========================= */
+.main-content {
+  min-height: calc(100vh - 200px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* =========================
+   ESTILOS EXTRAS PARA PAGAMENTOS
+========================= */
+
+/* Botões de método de pagamento (ex.: Paypal, Crypto, Card) */
+.payment-method-btn {
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  gap: 0.5rem;
+  text-transform: none; /* remove uppercase automático do MUI */
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+}
+
+/* Ícones dentro dos botões de pagamento */
+.payment-method-btn .icon {
+  font-size: 1.2rem;
+}
+
+/* Imagem do PayPal (maior) */
+.paypal-img {
+  max-width: 500px;
+  margin-bottom: 1rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Botões de criptomoedas */
+.crypto-options-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* =========================
+   MUI DISABLED BUTTON OVERRIDE
+========================= */
+.MuiButton-root.Mui-disabled {
+  color: #bbb !important;         /* Cor do texto ao desabilitar */
+  background-color: #555 !important; /* Fundo ao desabilitar */
+  cursor: not-allowed !important;
+  opacity: 0.7 !important;
+}
+
+/* =========================
+   RESPONSIVIDADE EXTRA P/ BOTÕES
+========================= */
+@media screen and (max-width: 600px) {
+  .payment-method-btn,
+  .crypto-options-btn {
+    width: 100% !important;
+    margin-bottom: 0.75rem;
+    justify-content: center;
+  }
+}
