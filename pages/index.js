@@ -31,7 +31,7 @@ export default function Home() {
       </Head>
 
       {/* HERO SECTION */}
-      <section className="hero-section inset-0 bg-black bg-opacity-50 transition-opacity duration-700"
+      <section className="hero-section inset-0 bg-opacity-50 transition-opacity duration-700"
         style={{
           backgroundImage: `url(${images[currentIndex]})`,
           backgroundSize: "cover",
