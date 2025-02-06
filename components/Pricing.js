@@ -502,7 +502,6 @@ export default function Pricing() {
               <Typography variant="body1" sx={{ mb: 2 }}>
                 Select a payment method:
               </Typography>
-
               <Box
                 sx={{
                   display: "flex",
