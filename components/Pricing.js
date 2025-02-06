@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   Modal,
   Box,
@@ -6,93 +6,92 @@ import {
   Button,
   TextField,
   Snackbar,
-  Alert
-} from '@mui/material';
-import Image from 'next/image';
-import { FaPaypal, FaBitcoin, FaCreditCard, FaCopy } from 'react-icons/fa';
-import { GiTwoCoins } from 'react-icons/gi';
+  Alert,
+} from "@mui/material";
+import Image from "next/image";
+import { FaPaypal, FaBitcoin, FaCreditCard, FaCopy } from "react-icons/fa";
+import { GiTwoCoins } from "react-icons/gi";
 
 export default function Pricing() {
   const tiers = [
     {
-      name: 'Basic',
+      name: "basic",
       price: 25,
       description:
-        'Start with 100GB storage, custom requests, and daily updates. Perfect for newcomers.',
+        "Start with 100GB storage, custom requests, and daily updates. Perfect for newcomers.",
       features: [
-        { name: 'Instant Access', included: true },
-        { name: 'One-Time Payment', included: true },
-        { name: '100+ Daily Updates', included: true },
-        { name: 'Custom Model Requests', included: false },
-        { name: 'Exclusive Content Packs', included: false },
-        { name: 'GROUP VIP Access', included: false }
+        { name: "Instant Access", included: true },
+        { name: "One-Time Payment", included: true },
+        { name: "100+ Daily Updates", included: true },
+        { name: "Custom Model Requests", included: false },
+        { name: "Exclusive Content Packs", included: false },
+        { name: "GROUP VIP Access", included: false },
       ],
-      popular: false
+      popular: false,
     },
     {
-      name: 'Standard',
+      name: "standard",
       price: 50,
       description:
-        'Enjoy 500GB storage, custom requests, and exclusive packs. Ideal balance of features.',
+        "Enjoy 500GB storage, custom requests, and exclusive packs. Ideal balance of features.",
       features: [
-        { name: 'Instant Access', included: true },
-        { name: 'One-Time Payment', included: true },
-        { name: '250+ Daily Updates', included: true },
-        { name: 'Custom Model Requests', included: true },
-        { name: 'Exclusive Content Packs', included: true },
-        { name: 'GROUP VIP Access', included: false }
+        { name: "Instant Access", included: true },
+        { name: "One-Time Payment", included: true },
+        { name: "250+ Daily Updates", included: true },
+        { name: "Custom Model Requests", included: true },
+        { name: "Exclusive Content Packs", included: true },
+        { name: "GROUP VIP Access", included: false },
       ],
-      popular: true
+      popular: true,
     },
     {
-      name: 'Premium',
+      name: "premium",
       price: 75,
       description:
-        'Get 4TB storage, priority support, and special perks. Built for dedicated fans.',
+        "Get 4TB storage, priority support, and special perks. Built for dedicated fans.",
       features: [
-        { name: 'Instant Access', included: true },
-        { name: 'One-Time Payment', included: true },
-        { name: '350+ Daily Updates', included: true },
-        { name: 'Priority Custom Requests', included: true },
-        { name: 'Exclusive Content Packs', included: true },
-        { name: 'GROUP VIP Access', included: true },
-        { name: 'Early Access to Exclusive Content', included: false }
+        { name: "Instant Access", included: true },
+        { name: "One-Time Payment", included: true },
+        { name: "350+ Daily Updates", included: true },
+        { name: "Priority Custom Requests", included: true },
+        { name: "Exclusive Content Packs", included: true },
+        { name: "GROUP VIP Access", included: true },
+        { name: "Early Access to Exclusive Content", included: false },
       ],
-      popular: false
+      popular: false,
     },
     {
-      name: 'VIP',
+      name: "VIP",
       price: 100,
       description:
-        'Go all-in with 15TB storage, VIP support, and early access. No limits.',
+        "Go all-in with 15TB storage, VIP support, and early access. No limits.",
       features: [
-        { name: 'Instant Access', included: true },
-        { name: 'One-Time Payment', included: true },
-        { name: '500+ Daily Updates', included: true },
-        { name: 'VIP Support & Requests', included: true },
-        { name: 'Exclusive Content Packs', included: true },
-        { name: 'Totally different from premiumn one', included: true },
-        { name: 'Early Access to Exclusive Content', included: true },
+        { name: "Instant Access", included: true },
+        { name: "One-Time Payment", included: true },
+        { name: "500+ Daily Updates", included: true },
+        { name: "VIP Support & Requests", included: true },
+        { name: "Exclusive Content Packs", included: true },
+        { name: "Totally different from premiumn one", included: true },
+        { name: "Early Access to Exclusive Content", included: true },
       ],
-      popular: false
-    }
+      popular: false,
+    },
   ];
-
 
   // Stripe links mapeados pelo nome do plano
   const stripeLinks = {
-    Basic: 'https://buy.stripe.com/cN27wbac18ZF0a4aEX',
-    Standard: 'https://buy.stripe.com/dR617Nbg5ejZcWQfZg',
-    Premium: 'https://buy.stripe.com/28o4jZ2Jz8ZFg92cN6',
-    VIP: 'https://donate.stripe.com/9AQcQvbg53Fl5uo7su'
+    Basic: "https://buy.stripe.com/cN27wbac18ZF0a4aEX",
+    Standard: "https://buy.stripe.com/dR617Nbg5ejZcWQfZg",
+    Premium: "https://buy.stripe.com/28o4jZ2Jz8ZFg92cN6",
+    VIP: "https://donate.stripe.com/9AQcQvbg53Fl5uo7su",
   };
 
   // Endereços de Crypto
   const cryptoAddresses = {
-    btc: 'bc1qcrf44erv6ukh0ceyl96us0y2amyh4kq4sre7v8',
-    ltc: 'LVVtkiCEJzzfzEMDn4tJengeYeNdkUfNzA',
-    eth: '0x681F1331627449bF43933647033b53c11305778d',
-    sol: '8tu1v7H6ztKQzmfuQ19cuqaZU2xkXAukqUN3k3Jy6L8i'
+    btc: "bc1qcrf44erv6ukh0ceyl96us0y2amyh4kq4sre7v8",
+    ltc: "LVVtkiCEJzzfzEMDn4tJengeYeNdkUfNzA",
+    eth: "0x681F1331627449bF43933647033b53c11305778d",
+    sol: "8tu1v7H6ztKQzmfuQ19cuqaZU2xkXAukqUN3k3Jy6L8i",
   };
 
   /**
@@ -109,24 +108,24 @@ export default function Pricing() {
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [step, setStep] = useState(1);
 
-  const [selectedMethod, setSelectedMethod] = useState('');
-  const [selectedCoin, setSelectedCoin] = useState('');
+  const [selectedMethod, setSelectedMethod] = useState("");
+  const [selectedCoin, setSelectedCoin] = useState("");
   const [cryptoRates, setCryptoRates] = useState(null);
 
   const [isPaymentDone, setIsPaymentDone] = useState(false);
 
   // Gift card code & error
-  const [giftCardCode, setGiftCardCode] = useState('');
-  const [giftCardError, setGiftCardError] = useState('');
+  const [giftCardCode, setGiftCardCode] = useState("");
+  const [giftCardError, setGiftCardError] = useState("");
 
   // TXID
-  const [txId, setTxId] = useState('');
-  const [txIdError, setTxIdError] = useState('');
+  const [txId, setTxId] = useState("");
+  const [txIdError, setTxIdError] = useState("");
 
   // Email
-  const [email, setEmail] = useState('');
-  const [finalMessage, setFinalMessage] = useState('');
-  const [emailError, setEmailError] = useState('');
+  const [email, setEmail] = useState("");
+  const [finalMessage, setFinalMessage] = useState("");
+  const [emailError, setEmailError] = useState("");
 
   // Rate limit para gift card
   const RATE_LIMIT_MS = 60000; // 60s
@@ -137,19 +136,19 @@ export default function Pricing() {
 
   // Snackbar para exibir avisos/erros
   const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [snackbarMsg, setSnackbarMsg] = useState('');
+  const [snackbarMsg, setSnackbarMsg] = useState("");
 
   // Busca as cotações de criptomoedas
   useEffect(() => {
     const fetchRates = async () => {
       try {
         const res = await fetch(
-          'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,litecoin,ethereum,solana&vs_currencies=usd'
+          "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,litecoin,ethereum,solana&vs_currencies=usd"
         );
         const data = await res.json();
         setCryptoRates(data);
       } catch (error) {
-        console.error('Error fetching crypto rates:', error);
+        console.error("Error fetching crypto rates:", error);
       }
     };
     fetchRates();
@@ -161,16 +160,16 @@ export default function Pricing() {
     setOpen(true);
 
     setStep(1);
-    setSelectedMethod('');
-    setSelectedCoin('');
+    setSelectedMethod("");
+    setSelectedCoin("");
     setIsPaymentDone(false);
-    setGiftCardCode('');
-    setGiftCardError('');
-    setTxId('');
-    setTxIdError('');
-    setEmail('');
-    setEmailError('');
-    setFinalMessage('');
+    setGiftCardCode("");
+    setGiftCardError("");
+    setTxId("");
+    setTxIdError("");
+    setEmail("");
+    setEmailError("");
+    setFinalMessage("");
     setCopiedAddress(false);
     setCopiedAmount(false);
   };
@@ -181,16 +180,16 @@ export default function Pricing() {
 
     setSelectedPlan(null);
     setStep(1);
-    setSelectedMethod('');
-    setSelectedCoin('');
+    setSelectedMethod("");
+    setSelectedCoin("");
     setIsPaymentDone(false);
-    setGiftCardCode('');
-    setGiftCardError('');
-    setTxId('');
-    setTxIdError('');
-    setEmail('');
-    setEmailError('');
-    setFinalMessage('');
+    setGiftCardCode("");
+    setGiftCardError("");
+    setTxId("");
+    setTxIdError("");
+    setEmail("");
+    setEmailError("");
+    setFinalMessage("");
     setCopiedAddress(false);
     setCopiedAmount(false);
   };
@@ -216,7 +215,7 @@ export default function Pricing() {
       setIsPaymentDone(true);
       setTimeout(() => setCopiedAddress(false), 2000);
     } catch (err) {
-      console.error('Failed to copy address:', err);
+      console.error("Failed to copy address:", err);
     }
   };
 
@@ -227,28 +226,28 @@ export default function Pricing() {
       setCopiedAmount(true);
       setTimeout(() => setCopiedAmount(false), 2000);
     } catch (err) {
-      console.error('Failed to copy amount:', err);
+      console.error("Failed to copy amount:", err);
     }
   };
 
   // "Não tenho crypto" => step=6 => gift card
   const handleOpenGiftCardStep = () => {
-    window.open('http://cryptovoucher.io/', '_blank');
+    window.open("http://cryptovoucher.io/", "_blank");
     setStep(6);
     setIsPaymentDone(false);
-    setGiftCardError('');
-    setGiftCardCode('');
+    setGiftCardError("");
+    setGiftCardCode("");
   };
 
   // Confirma gift card
   const handleConfirmGiftCardCode = async () => {
     if (!giftCardCode.trim()) {
-      setGiftCardError('Please enter your gift card code');
+      setGiftCardError("Please enter your gift card code");
       return;
     }
 
     // Verifica o tempo da última requisição
-    const lastRequestTime = localStorage.getItem('lastGiftCardRequestTime');
+    const lastRequestTime = localStorage.getItem("lastGiftCardRequestTime");
     const currentTime = Date.now();
 
     if (lastRequestTime && currentTime - lastRequestTime < RATE_LIMIT_MS) {
@@ -262,44 +261,44 @@ export default function Pricing() {
     }
 
     try {
-      const response = await fetch('/api/webhook', {
-        method: 'POST',
+      const response = await fetch("/api/webhook", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           giftCardCode,
-          planName: selectedPlan?.name
-        })
+          planName: selectedPlan?.name,
+        }),
       });
 
       const data = await response.json();
 
       if (response.ok) {
         // Armazena o horário da última requisição bem-sucedida
-        localStorage.setItem('lastGiftCardRequestTime', currentTime.toString());
+        localStorage.setItem("lastGiftCardRequestTime", currentTime.toString());
 
         // Webhook enviado com sucesso
-        setGiftCardError('');
+        setGiftCardError("");
         setIsPaymentDone(true);
         setStep(4); // Avança para a próxima etapa
       } else {
-        setGiftCardError(data.message || 'Failed to send gift card code');
+        setGiftCardError(data.message || "Failed to send gift card code");
       }
     } catch (err) {
-      console.error('Error sending gift card code to API:', err);
-      setGiftCardError('Error sending gift card code. Try again later.');
+      console.error("Error sending gift card code to API:", err);
+      setGiftCardError("Error sending gift card code. Try again later.");
     }
   };
 
   // "I have paid"
   const handlePaid = () => {
     if (!isPaymentDone) {
-      setSnackbarMsg('Please complete your payment first!');
+      setSnackbarMsg("Please complete your payment first!");
       setSnackbarOpen(true);
       return;
     }
-    if (selectedMethod === 'crypto') {
+    if (selectedMethod === "crypto") {
       // Próximo => step=7 => pede TXID
       setStep(7);
     } else {
@@ -310,35 +309,35 @@ export default function Pricing() {
 
   const handleVerifyTxId = async () => {
     if (!txId) {
-      setTxIdError('Please enter your transaction ID');
+      setTxIdError("Please enter your transaction ID");
       return;
     }
 
     try {
-      const response = await fetch('/api/verifyTx', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("/api/verifyTx", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           txId,
-          coin: selectedCoin
-        })
+          coin: selectedCoin,
+        }),
       });
 
       const data = await response.json();
 
       if (!response.ok) {
         setTxIdError(
-          data.error || 'Could not fetch transaction. Check TXID or try again.'
+          data.error || "Could not fetch transaction. Check TXID or try again."
         );
         return;
       }
 
-      if (selectedCoin === 'sol') {
+      if (selectedCoin === "sol") {
         if (data.result && data.result.meta && data.result.meta.err === null) {
-          setTxIdError('');
+          setTxIdError("");
           setStep(4);
         } else {
-          setTxIdError('Transaction failed or not confirmed yet.');
+          setTxIdError("Transaction failed or not confirmed yet.");
         }
       } else {
         // Simplificamos: somente usamos found para checar a transação
@@ -348,17 +347,17 @@ export default function Pricing() {
 
         if (!found) {
           setTxIdError(
-            'Transaction does not send to our address or is not confirmed yet.'
+            "Transaction does not send to our address or is not confirmed yet."
           );
           return;
         }
 
-        setTxIdError('');
+        setTxIdError("");
         setStep(4);
       }
     } catch (err) {
-      console.error('Error verifying TXID:', err);
-      setTxIdError('Error verifying TXID. Please try again later.');
+      console.error("Error verifying TXID:", err);
+      setTxIdError("Error verifying TXID. Please try again later.");
     }
   };
 
@@ -367,10 +366,10 @@ export default function Pricing() {
     if (!cryptoRates || !selectedCoin || !selectedPlan) return null;
 
     const coinGeckoId = {
-      btc: 'bitcoin',
-      ltc: 'litecoin',
-      eth: 'ethereum',
-      sol: 'solana'
+      btc: "bitcoin",
+      ltc: "litecoin",
+      eth: "ethereum",
+      sol: "solana",
     }[selectedCoin];
 
     const priceUsd = cryptoRates[coinGeckoId]?.usd || 0;
@@ -381,30 +380,33 @@ export default function Pricing() {
 
   // Step 4 => pegar email
   const handleConfirmEmail = () => {
-    setEmailError('');
+    setEmailError("");
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      setEmailError('Please enter a valid email address!');
+      setEmailError("Please enter a valid email address!");
       return;
     }
 
-    setFinalMessage('You will receive access within 10 minutes!');
+    setFinalMessage("You will receive access within 10 minutes!");
     setStep(5);
   };
 
   // Estilo do modal
   const modalStyle = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: { xs: '90%', sm: '550px' },
-    bgcolor: '#181818',
-    border: '2px solid #000',
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: { xs: "90%", sm: "550px", md: "700px" },
+    background: `
+        radial-gradient(circle at top left, rgba(255, 0, 150, 0.4), transparent 100%),
+        
+        #181818
+    `,
     boxShadow: 24,
     p: 3,
-    borderRadius: '6px'
+    borderRadius: "20px",
   };
 
   return (
@@ -412,19 +414,22 @@ export default function Pricing() {
       <div className="container">
         <h2 className="pricing-title">Choose Your Plan</h2>
         <p className="pricing-subtitle">
-          Find the perfect package for your needs. Each tier offers unique perks —
-          from custom requests to massive storage and VIP access. Ready to level up?
+          Find the perfect package for your needs. Each tier offers unique perks
+          — from custom requests to massive storage and VIP access. Ready to
+          level up?
         </p>
 
         <div className="pricing-container">
           {tiers.map((tier, index) => (
             <div
               key={index}
-              className={`pricing-card ${tier.popular ? 'popular' : ''}`}
+              className={`pricing-card ${tier.popular ? "popular" : ""}`}
             >
               <div className="plan-name">
                 <span>{tier.name}</span>
-                {tier.popular && <span className="plan-badge">Most Popular</span>}
+                {tier.popular && (
+                  <span className="plan-badge">Most Popular</span>
+                )}
               </div>
 
               <p className="plan-description">{tier.description}</p>
@@ -439,7 +444,7 @@ export default function Pricing() {
                   <li
                     key={idx}
                     className={
-                      feature.included ? 'feature-included' : 'feature-excluded'
+                      feature.included ? "feature-included" : "feature-excluded"
                     }
                   >
                     {feature.name}
@@ -468,14 +473,25 @@ export default function Pricing() {
       >
         <Box sx={modalStyle}>
           {/* Título */}
-          <Typography variant="h6" component="h2" gutterBottom>
+          <Typography
+            variant="h6"
+            component="h2"
+            gutterBottom
+            style={{ textAlign: "center" }}
+          >
             {selectedPlan
-              ? `Payment for: ${selectedPlan.name} Plan`
-              : 'Choose a Plan'}
+              ? `Payment for ${selectedPlan.name} plan`
+              : "Choose a Plan"}
           </Typography>
 
           {selectedPlan && (
-            <Typography sx={{ mb: 2 }}>
+            <Typography
+              sx={{
+                mb: 2,
+                color: "red",
+                textAlign: "center",
+              }}
+            >
               <strong>Price:</strong> ${selectedPlan.price} USD
             </Typography>
           )}
@@ -489,79 +505,122 @@ export default function Pricing() {
 
               <Box
                 sx={{
-                  display: 'flex',
-                  flexDirection: { xs: 'column', sm: 'row' },
-                  justifyContent: 'center',
-                  gap: '1rem',
-                  mb: 2
+                  display: "flex",
+                  flexDirection: { xs: "column", sm: "row" },
+                  justifyContent: "center",
+                  gap: "1rem",
+                  mb: 2,
                 }}
               >
                 <Button
                   variant="contained"
                   color="primary"
-                  onClick={() => handleSelectMethod('paypal')}
+                  onClick={() => handleSelectMethod("paypal")}
                   sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.5rem',
-                    width: { xs: '100%', sm: 'auto' }
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.5rem",
+                    width: "220px",
+                    backgroundColor: "white", // Set background to white
+                    "&:hover": { backgroundColor: "#b0b0b0" }, // Optional: light gray on hover
                   }}
                 >
-                  <FaPaypal />
-                  PayPal
+                  <img
+                    src="/paypal.svg"
+                    alt="PayPal"
+                    width="120"
+                    height="auto"
+                  />
                 </Button>
 
                 <Button
                   variant="contained"
                   color="secondary"
-                  onClick={() => handleSelectMethod('crypto')}
+                  onClick={() => handleSelectMethod("crypto")}
                   sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.5rem',
-                    width: { xs: '100%', sm: 'auto' }
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.2rem",
+                    width: "220px",
                   }}
                 >
-                  <FaBitcoin />
+                  <img
+                    src="/bitcoin.png"
+                    alt="PayPal"
+                    width="50"
+                    height="auto"
+                  />
                   Crypto or Gift Card
                 </Button>
 
                 <Button
                   variant="contained"
                   sx={{
-                    backgroundColor: '#4caf50',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.5rem',
-                    width: { xs: '100%', sm: 'auto' }
+                    backgroundColor: "#4caf50",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.5rem",
+                    width: "220px",
+                    padding: "1px 4px",
+                    "&:hover": { backgroundColor: "#3d9900" },
                   }}
-                  onClick={() => handleSelectMethod('card')}
+                  onClick={() => handleSelectMethod("card")}
                 >
-                  <FaCreditCard />
+                  <img
+                    src="/credit.png"
+                    alt="PayPal"
+                    width="70"
+                    height="auto"
+                  />
                   Credit Card
                 </Button>
               </Box>
-
-              <Button
-                variant="text"
-                sx={{ color: '#bbb' }}
-                fullWidth
-                onClick={handleClose}
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  width: "100%",
+                }}
               >
-                Cancel
-              </Button>
+                <Button
+                  variant="text"
+                  sx={{
+                    backgroundColor: "var(--primary-color)", // Use your primary color
+                    color: "#fff",
+                    fontWeight: 700,
+                    borderRadius: "6px",
+                    padding: "0.75rem 1.5rem",
+                    width: "210px", // Keeping full width
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    textDecoration: "none",
+                    transition: "background-color 0.3s, transform 0.2s",
+                    "&:hover": {
+                      backgroundColor: "darkred", // Example hover effect
+                      transform: "scale(1.05)", // Slight hover effect
+                    },
+                  }}
+                  fullWidth
+                  onClick={handleClose}
+                >
+                  Cancel
+                </Button>
+              </Box>
             </>
           )}
 
           {/* STEP 2 => PayPal / Card / Crypto */}
-          {step === 2 && selectedMethod === 'paypal' && (
+          {step === 2 && selectedMethod === "paypal" && (
             <>
               <Typography variant="body1" sx={{ mb: 2 }}>
-                Pay via PayPal, then come back and click &quot;I have paid&quot;.
+                Pay via PayPal, then come back and click &quot;I have
+                paid&quot;.
               </Typography>
-              <Typography variant="body2" sx={{ color: '#f76363', mb: 2 }}>
-                **Pay with PayPal and choose &quot;Friends and Family&quot; or your
-                money will be refunded and you won&apos;t receive your content.**
+              <Typography variant="body2" sx={{ color: "#f76363", mb: 2 }}>
+                **Pay with PayPal and choose &quot;Friends and Family&quot; or
+                your money will be refunded and you won&apos;t receive your
+                content.**
               </Typography>
 
               <Box sx={{ mb: 2 }}>
@@ -571,12 +630,12 @@ export default function Pricing() {
                   width={400}
                   height={300}
                   style={{
-                    display: 'block',
-                    margin: '0 auto',
-                    marginBottom: '1rem',
-                    width: '100%',
-                    maxWidth: '400px',
-                    height: 'auto'
+                    display: "block",
+                    margin: "0 auto",
+                    marginBottom: "1rem",
+                    width: "100%",
+                    maxWidth: "400px",
+                    height: "auto",
                   }}
                 />
               </Box>
@@ -587,7 +646,7 @@ export default function Pricing() {
                 fullWidth
                 sx={{ mb: 2 }}
                 onClick={() => {
-                  window.open('https://paypal.me/nazmussakib97', '_blank');
+                  window.open("https://paypal.me/nazmussakib97", "_blank");
                   setIsPaymentDone(true);
                 }}
               >
@@ -606,7 +665,7 @@ export default function Pricing() {
 
               <Button
                 variant="text"
-                sx={{ mt: 2, color: '#bbb' }}
+                sx={{ mt: 2, color: "#bbb" }}
                 fullWidth
                 onClick={handleClose}
               >
@@ -615,19 +674,20 @@ export default function Pricing() {
             </>
           )}
 
-          {step === 2 && selectedMethod === 'card' && (
+          {step === 2 && selectedMethod === "card" && (
             <>
               <Typography variant="body1" sx={{ mb: 2 }}>
-                Pay with Stripe using your credit card, then click &quot;I have paid&quot;.
+                Pay with Stripe using your credit card, then click &quot;I have
+                paid&quot;.
               </Typography>
 
               <Button
                 variant="contained"
-                sx={{ backgroundColor: '#4caf50', mb: 2 }}
+                sx={{ backgroundColor: "#4caf50", mb: 2 }}
                 fullWidth
                 onClick={() => {
-                  const link = stripeLinks[selectedPlan.name] || '#';
-                  window.open(link, '_blank');
+                  const link = stripeLinks[selectedPlan.name] || "#";
+                  window.open(link, "_blank");
                   setIsPaymentDone(true);
                 }}
               >
@@ -646,7 +706,7 @@ export default function Pricing() {
 
               <Button
                 variant="text"
-                sx={{ mt: 2, color: '#bbb' }}
+                sx={{ mt: 2, color: "#bbb" }}
                 fullWidth
                 onClick={handleClose}
               >
@@ -655,7 +715,7 @@ export default function Pricing() {
             </>
           )}
 
-          {step === 2 && selectedMethod === 'crypto' && (
+          {step === 2 && selectedMethod === "crypto" && (
             <>
               <Typography variant="body1" sx={{ mb: 2 }}>
                 Choose your cryptocurrency or buy a gift card:
@@ -663,23 +723,23 @@ export default function Pricing() {
 
               <Box
                 sx={{
-                  display: 'flex',
-                  flexDirection: { xs: 'column', sm: 'row' },
-                  flexWrap: 'wrap',
-                  gap: '1rem',
-                  justifyContent: 'center',
-                  mb: 2
+                  display: "flex",
+                  flexDirection: { xs: "column", sm: "row" },
+                  flexWrap: "wrap",
+                  gap: "1rem",
+                  justifyContent: "center",
+                  mb: 2,
                 }}
               >
                 <Button
                   variant="contained"
                   sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.5rem',
-                    width: { xs: '100%', sm: 'auto' }
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.5rem",
+                    width: { xs: "100%", sm: "auto" },
                   }}
-                  onClick={() => handleSelectCoin('btc')}
+                  onClick={() => handleSelectCoin("btc")}
                 >
                   <FaBitcoin />
                   Bitcoin
@@ -688,13 +748,13 @@ export default function Pricing() {
                 <Button
                   variant="contained"
                   sx={{
-                    backgroundColor: '#ff9800',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.5rem',
-                    width: { xs: '100%', sm: 'auto' }
+                    backgroundColor: "#ff9800",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.5rem",
+                    width: { xs: "100%", sm: "auto" },
                   }}
-                  onClick={() => handleSelectCoin('eth')}
+                  onClick={() => handleSelectCoin("eth")}
                 >
                   <GiTwoCoins />
                   Ethereum
@@ -703,14 +763,14 @@ export default function Pricing() {
                 <Button
                   variant="contained"
                   sx={{
-                    backgroundColor: '#cfcfcf',
-                    color: '#000',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.5rem',
-                    width: { xs: '100%', sm: 'auto' }
+                    backgroundColor: "#cfcfcf",
+                    color: "#000",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.5rem",
+                    width: { xs: "100%", sm: "auto" },
                   }}
-                  onClick={() => handleSelectCoin('ltc')}
+                  onClick={() => handleSelectCoin("ltc")}
                 >
                   <GiTwoCoins />
                   Litecoin
@@ -719,13 +779,13 @@ export default function Pricing() {
                 <Button
                   variant="contained"
                   sx={{
-                    backgroundColor: '#9c27b0',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.5rem',
-                    width: { xs: '100%', sm: 'auto' }
+                    backgroundColor: "#9c27b0",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.5rem",
+                    width: { xs: "100%", sm: "auto" },
                   }}
-                  onClick={() => handleSelectCoin('sol')}
+                  onClick={() => handleSelectCoin("sol")}
                 >
                   <GiTwoCoins />
                   Solana
@@ -736,14 +796,14 @@ export default function Pricing() {
                 variant="outlined"
                 fullWidth
                 onClick={handleOpenGiftCardStep}
-                sx={{ mb: 2, color: '#fff', borderColor: '#ccc' }}
+                sx={{ mb: 2, color: "#fff", borderColor: "#ccc" }}
               >
                 I don&apos;t have crypto, buy gift card
               </Button>
 
               <Button
                 variant="text"
-                sx={{ color: '#bbb' }}
+                sx={{ color: "#bbb" }}
                 fullWidth
                 onClick={handleClose}
               >
@@ -753,19 +813,20 @@ export default function Pricing() {
           )}
 
           {/* STEP 3 => mostrar endereço => "I have paid" => step=7 */}
-          {step === 3 && selectedMethod === 'crypto' && selectedCoin && (
+          {step === 3 && selectedMethod === "crypto" && selectedCoin && (
             <>
               <Typography variant="body1" sx={{ mb: 2 }}>
-                Send the payment to the address below. Then click &quot;I have paid&quot; once done.
+                Send the payment to the address below. Then click &quot;I have
+                paid&quot; once done.
               </Typography>
 
               <Box
                 sx={{
-                  backgroundColor: '#2a2a2a',
-                  padding: '1rem',
-                  borderRadius: '6px',
+                  backgroundColor: "#2a2a2a",
+                  padding: "1rem",
+                  borderRadius: "6px",
                   mb: 2,
-                  wordWrap: 'break-word'
+                  wordWrap: "break-word",
                 }}
               >
                 <Typography variant="body2" sx={{ mb: 1 }}>
@@ -775,12 +836,14 @@ export default function Pricing() {
                 <Button
                   variant="outlined"
                   color="inherit"
-                  onClick={() => handleCopyAddress(cryptoAddresses[selectedCoin])}
+                  onClick={() =>
+                    handleCopyAddress(cryptoAddresses[selectedCoin])
+                  }
                   size="small"
                   sx={{ mb: 1 }}
                 >
                   <FaCopy style={{ marginRight: 5 }} />
-                  {copiedAddress ? 'Copied!' : 'Copy Address'}
+                  {copiedAddress ? "Copied!" : "Copy Address"}
                 </Button>
               </Box>
 
@@ -804,12 +867,14 @@ export default function Pricing() {
                       variant="outlined"
                       color="inherit"
                       onClick={() =>
-                        handleCopyAmount(`${formatted} ${selectedCoin.toUpperCase()}`)
+                        handleCopyAmount(
+                          `${formatted} ${selectedCoin.toUpperCase()}`
+                        )
                       }
                       size="small"
                     >
                       <FaCopy style={{ marginRight: 5 }} />
-                      {copiedAmount ? 'Copied!' : 'Copy Amount'}
+                      {copiedAmount ? "Copied!" : "Copy Amount"}
                     </Button>
                   </Box>
                 );
@@ -828,7 +893,7 @@ export default function Pricing() {
 
               <Button
                 variant="text"
-                sx={{ color: '#bbb' }}
+                sx={{ color: "#bbb" }}
                 fullWidth
                 onClick={handleClose}
               >
@@ -848,9 +913,9 @@ export default function Pricing() {
                 label="Gift Card Code"
                 variant="filled"
                 fullWidth
-                sx={{ mb: 2, backgroundColor: '#2a2a2a' }}
-                InputProps={{ style: { color: '#fff' } }}
-                InputLabelProps={{ style: { color: '#ccc' } }}
+                sx={{ mb: 2, backgroundColor: "#2a2a2a" }}
+                InputProps={{ style: { color: "#fff" } }}
+                InputLabelProps={{ style: { color: "#ccc" } }}
                 value={giftCardCode}
                 onChange={(e) => setGiftCardCode(e.target.value)}
               />
@@ -865,14 +930,14 @@ export default function Pricing() {
               </Button>
 
               {giftCardError && (
-                <Typography variant="body2" sx={{ color: 'red', mt: 1 }}>
+                <Typography variant="body2" sx={{ color: "red", mt: 1 }}>
                   {giftCardError}
                 </Typography>
               )}
 
               <Button
                 variant="text"
-                sx={{ mt: 2, color: '#bbb' }}
+                sx={{ mt: 2, color: "#bbb" }}
                 fullWidth
                 onClick={handleClose}
               >
@@ -882,19 +947,20 @@ export default function Pricing() {
           )}
 
           {/* STEP 7 => verificar TXID (crypto) */}
-          {step === 7 && selectedMethod === 'crypto' && (
+          {step === 7 && selectedMethod === "crypto" && (
             <>
               <Typography variant="body1" sx={{ mb: 2 }}>
-                Please enter your transaction ID (TXID) so we can confirm your payment:
+                Please enter your transaction ID (TXID) so we can confirm your
+                payment:
               </Typography>
 
               <TextField
                 label="Transaction ID (TXID)"
                 variant="filled"
                 fullWidth
-                sx={{ mb: 2, backgroundColor: '#2a2a2a' }}
-                InputProps={{ style: { color: '#fff' } }}
-                InputLabelProps={{ style: { color: '#ccc' } }}
+                sx={{ mb: 2, backgroundColor: "#2a2a2a" }}
+                InputProps={{ style: { color: "#fff" } }}
+                InputLabelProps={{ style: { color: "#ccc" } }}
                 value={txId}
                 onChange={(e) => setTxId(e.target.value)}
               />
@@ -909,14 +975,14 @@ export default function Pricing() {
               </Button>
 
               {txIdError && (
-                <Typography variant="body2" sx={{ color: 'red', mt: 1 }}>
+                <Typography variant="body2" sx={{ color: "red", mt: 1 }}>
                   {txIdError}
                 </Typography>
               )}
 
               <Button
                 variant="text"
-                sx={{ mt: 2, color: '#bbb' }}
+                sx={{ mt: 2, color: "#bbb" }}
                 fullWidth
                 onClick={handleClose}
               >
@@ -936,13 +1002,13 @@ export default function Pricing() {
                 label="Email"
                 variant="filled"
                 fullWidth
-                sx={{ mb: 2, backgroundColor: '#2a2a2a' }}
-                InputProps={{ style: { color: '#fff' } }}
-                InputLabelProps={{ style: { color: '#ccc' } }}
+                sx={{ mb: 2, backgroundColor: "#2a2a2a" }}
+                InputProps={{ style: { color: "#fff" } }}
+                InputLabelProps={{ style: { color: "#ccc" } }}
                 value={email}
                 onChange={(e) => {
                   setEmail(e.target.value);
-                  if (emailError) setEmailError('');
+                  if (emailError) setEmailError("");
                 }}
               />
 
@@ -956,14 +1022,14 @@ export default function Pricing() {
               </Button>
 
               {emailError && (
-                <Typography variant="body2" sx={{ mt: 1, color: 'red' }}>
+                <Typography variant="body2" sx={{ mt: 1, color: "red" }}>
                   {emailError}
                 </Typography>
               )}
 
               <Button
                 variant="text"
-                sx={{ mt: 2, color: '#bbb' }}
+                sx={{ mt: 2, color: "#bbb" }}
                 fullWidth
                 onClick={handleClose}
               >
@@ -976,7 +1042,7 @@ export default function Pricing() {
           {step === 5 && (
             <>
               <Typography variant="body1" sx={{ mb: 2 }}>
-                {finalMessage || 'Thank you!'}
+                {finalMessage || "Thank you!"}
               </Typography>
               <Button
                 variant="contained"
@@ -996,13 +1062,13 @@ export default function Pricing() {
         open={snackbarOpen}
         autoHideDuration={3000}
         onClose={() => setSnackbarOpen(false)}
-        ContentProps={{ sx: { marginTop: '120px' } }}
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        ContentProps={{ sx: { marginTop: "120px" } }}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
       >
         <Alert
           onClose={() => setSnackbarOpen(false)}
           severity="error"
-          sx={{ width: '100%' }}
+          sx={{ width: "100%" }}
         >
           {snackbarMsg}
         </Alert>
