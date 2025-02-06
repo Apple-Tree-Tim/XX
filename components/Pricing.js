@@ -9,7 +9,7 @@ import {
   Alert,
 } from "@mui/material";
 import Image from "next/image";
-import { FaPaypal, FaBitcoin, FaCreditCard, FaCopy } from "react-icons/fa";
+import { FaBitcoin, FaCopy } from "react-icons/fa";
 import { GiTwoCoins } from "react-icons/gi";
 
 export default function Pricing() {

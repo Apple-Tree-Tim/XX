@@ -17,7 +17,7 @@ export default function Home() {
     }, 10000); // Change every 10 seconds
 
     return () => clearInterval(interval); // Cleanup on unmount
-  }, []);
+  }, [images.length]);
 
   return (
     <Layout>
